@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#SBATCH -J gmx_mpi_16
+#SBATCH -e gmx_mpi_16.%j.err
+#SBATCH -o gmx_mpi_16.%j.log
+#SBATCH -N 2
+#SBATCH -n 32
+#SBATCH -t 30
+#SBATCH --reservation=curs
+  
+module load apps/gromacs/2018.3
+
+OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}
+
+cp ${HOME}/gmx/ion_channel.tpr ${SCRATCH}
+cd ${SCRATCH}
+
+srun gmx_mpi mdrun -ntomp $OMP_NUM_THREADS -npme 0 -ntomp_pme 0 -s ion_channel.tpr
+
+cp md.log ${SLURM_SUBMIT_DIR}/md.${SLURM_JOB_ID}.log
