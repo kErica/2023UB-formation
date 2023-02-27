@@ -1,14 +1,15 @@
 # 2023UB-formation
-# Contact: erica.bianco@hpcnow.com
+```
+Contact: erica.bianco@hpcnow.com
+```
 The content of this folder was tested on Feb 2023 on the purpose to fulfill the HPC best practices Hands-on for the
 Ciencia de los Datos (Data Science), Aplicaciones en Biología y Medicina con Python y R
 UB IL-3 course
 
-#######################################
-# List of command to run the hands-on #
-#######################################
+## List of command to run the hands-on #
 
-## SLURM basic commands
+### SLURM basic commands
+```
 sacct	## Displays accounting data for all jobs.
 salloc	## Allocate resources for interactive use.
 sbatch	## Submit a job script to a queue
@@ -19,13 +20,18 @@ sjstat	## Display statistics of jobs ( data from sinfo, squeue and scontrol).
 smap	## Graphically view information about SLURM jobs, partitions, and set config. param
 squeue	## View information about jobs located in the SLURM scheduling queue.
 srun	## Run a parallel job
+```
 
-## Launch a serial job
+### Launch a serial job
+```
 cd Serial
 sbatch serial.slm
 cd ..
+```
 
-## Linpack MPI job
+### Linpack MPI job
+```
 cd Linpack/
 sbatch HPL_Pirineus.slm
+```
 
