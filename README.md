@@ -8,7 +8,33 @@ UB IL-3 course
 
 ## List of command to run the hands-on #
 
-### SLURM basic commands
+### Access CSUC and transfer files
+
+#### How to login
+```
+ssh curs$NUM@hpc.csuc.cat -p 2122
+```
+
+#### How to move data
+```
+scp -rp -P 2122 2023UB-formation curs$NUM@hpc.csuc.cat:/home/curs$NUM
+
+## or
+cd 2023UB-formation
+sftp –oPort=2122 <YOUR_USERNAME>@hpc.csuc.cat
+mput -R *
+```
+
+### Explore the environment
+```
+pwd
+df -h
+ls
+ls -ld .
+ls -l /
+```
+
+#### SLURM basic commands
 ```
 sacct	## Displays accounting data for all jobs.
 salloc	## Allocate resources for interactive use.
