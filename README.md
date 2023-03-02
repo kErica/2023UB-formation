@@ -56,10 +56,12 @@ srun	## Run a parallel job
 cd 01- Serial
 sbatch serial.slm
 ## check your jobs and outputs
-squeue -u $USER
 ls -lthr
+```
+
+### Launch an array of jobs
+```
 sbatch --array=0-9 serial-array.slm
-squeue -u $USER
 ```
 
 ## Launch an OpenMP job
@@ -70,10 +72,21 @@ sbatch openmp.slm
 cat hello.log
 ```
 
-### Linpack MPI job
+### OpenMP, Hybrid and MPI jobs
 ```
-cd ../Linpack/
-sbatch HPL_Pirineus.slm
-squeue -u $USER
+cd ../03-gmx/
+
+## OpenMP job
+sbatch gmx_omp_8.slm
+
+## hybrid job
+sbatch gmx_hyb_8.slm
+
+## MPI job
+sbatch gmx_mpi_8.slm
 ```
+
+
+
+
 
