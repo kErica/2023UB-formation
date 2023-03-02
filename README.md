@@ -64,7 +64,7 @@ ls -lthr
 sbatch --array=0-9 serial-array.slm
 ```
 
-## Launch an OpenMP job
+### Launch an OpenMP job
 ```
 cd ../02-OpenMP
 ls
