@@ -4,7 +4,7 @@
 #SBATCH -e gmx_hyb_8.%j.err
 #SBATCH -o gmx_hyb_8.%j.log
 #SBATCH -N 2
-#SBATCH -n 1
+#SBATCH --ntasks-per-node 1
 #SBATCH -c 4
 #SBATCH --mem-per-cpu=2G
 #SBATCH -t 30
