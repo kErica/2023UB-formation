@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH -J Serial         # Jobname
+#SBATCH --ntasks=1        # Processors
+#SBATCH --time=10:00      # Walltime
+#SBATCH --mem-per-cpu=2G  # memory/cpu
+#SBATCH -o serial-%j.out
+#SBATCH -e serial-%j.err
+##SBATCH --partition=test  # Queue
+
+srun sleep 30
+srun echo "My first serial Slurm job - ${SLURM_ARRAY_TASK_ID}"
+
+
+
+

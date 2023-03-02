@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# BSUB -J gmx_mpi_16
+# BSUB -eo gmx_mpi_16.log
+# BSUB -n 16
+# BSUB -q cursnow
+# BSUB -R prades
+# BSUB -R "span[hosts]=2"
+  
+. /opt/modules/default/init/bash
+module load gromacs/2016-3
+source /prod/GROMACS/2016-3/bin/GMXRC
+OMP_NUM_THREADS=1
+
+lsf_copy $PWD/ion_channel.tpr
+cd $TMPDIR
+mpirun -np 16 gmx_mpi mdrun -ntomp $OMP_NUM_THREADS -npme 0 -ntomp_pme 0 -s ion_channel.tpr

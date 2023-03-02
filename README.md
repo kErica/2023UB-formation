@@ -12,16 +12,17 @@ UB IL-3 course
 
 #### How to login
 ```
-ssh curs$NUM@hpc.csuc.cat -p 2122
+CSUC_USER=curs<INSERT YOUR NUM HERE>
+ssh $CSUC_USER@hpc.csuc.cat -p 2122
 ```
 
 #### How to move data
 ```
-scp -rp -P 2122 2023UB-formation curs$NUM@hpc.csuc.cat:/home/curs$NUM
+scp -rp -P 2122 2023UB-formation $CSUC_USER@hpc.csuc.cat:/home/$CSUC_USER
 
 ## or
 cd 2023UB-formation
-sftp –oPort=2122 <YOUR_USERNAME>@hpc.csuc.cat
+sftp –oPort=2122 $CSUC_USER>@hpc.csuc.cat
 mput -R *
 ```
 
@@ -48,16 +49,31 @@ squeue	## View information about jobs located in the SLURM scheduling queue.
 srun	## Run a parallel job
 ```
 
+> **_NOTE:_**  You can open a second terminal and have a current view of your queue jobs. `watch squeue -u $USER`
+
 ### Launch a serial job
 ```
-cd Serial
+cd 01- Serial
 sbatch serial.slm
-cd ..
+## check your jobs and outputs
+squeue -u $USER
+ls -lthr
+sbatch --array=0-9 serial-array.slm
+squeue -u $USER
+```
+
+## Launch an OpenMP job
+```
+cd ../02-OpenMP
+ls
+sbatch openmp.slm
+cat hello.log
 ```
 
 ### Linpack MPI job
 ```
-cd Linpack/
+cd ../Linpack/
 sbatch HPL_Pirineus.slm
+squeue -u $USER
 ```
 
