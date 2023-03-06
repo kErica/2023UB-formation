@@ -59,6 +59,11 @@ smap	## Graphically view information about SLURM jobs, partitions, and set confi
 squeue	## View information about jobs located in the SLURM scheduling queue.
 srun	## Run a parallel job
 ```
+## Initiate an interactive session
+```
+salloc --time 4:00:00 srun --pty bash
+```
+
 
 > **_NOTE:_**  You can open a second terminal and have a current view of your queue jobs. `watch squeue -u $USER`
 
