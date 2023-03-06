@@ -11,6 +11,17 @@ UB IL-3 course
 ### Access CSUC and transfer files
 
 #### How to login
+Your username is `curs$NUM` and your initial password is c1rs$NUM
+
+NUM=[1..23].
+
+At the first access you have set a new password with the following rules:
+* 8 characters
+* 1 upper case
+* 1 lower case
+* 1 number
+* 1 special character
+
 ```
 CSUC_USER=curs<INSERT YOUR NUM HERE>
 ssh $CSUC_USER@hpc.csuc.cat -p 2122

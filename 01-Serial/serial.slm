@@ -5,7 +5,7 @@
 #SBATCH --mem-per-cpu=2G  # memory/cpu
 #SBATCH -o serial-%j.out
 #SBATCH -e serial-%j.err
-##SBATCH --partition=test  # Queue
+#SBATCH --reservation=hpcnow  
 
 srun sleep 30
 srun echo "My first serial Slurm job"
