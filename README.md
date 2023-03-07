@@ -29,12 +29,19 @@ ssh $CSUC_USER@hpc.csuc.cat -p 2122
 
 #### How to move data
 ```
+git clone https://github.com/kErica/2023UB-formation.git
+
 scp -rp -P 2122 2023UB-formation $CSUC_USER@hpc.csuc.cat:/home/$CSUC_USER
 
 ## or
 cd 2023UB-formation
 sftp –oPort=2122 $CSUC_USER>@hpc.csuc.cat
 mput -R *
+```
+
+Then ssh to the system
+```
+ssh $CSUC_USER@hpc.csuc.cat -p 2122
 ```
 
 ### Explore the environment
@@ -59,7 +66,8 @@ smap	## Graphically view information about SLURM jobs, partitions, and set confi
 squeue	## View information about jobs located in the SLURM scheduling queue.
 srun	## Run a parallel job
 ```
-## Initiate an interactive session
+## How to initiate an interactive session
+> **_NOTE:_**  This is not going to work as your user cannot allocate resources.
 ```
 salloc --time 4:00:00 srun --pty bash
 ```
