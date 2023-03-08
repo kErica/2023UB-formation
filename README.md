@@ -78,7 +78,7 @@ salloc --time 4:00:00 srun --pty bash
 
 ### Launch a serial job
 ```
-cd 01- Serial
+cd 2023UB-formation-master/01-Serial
 sbatch serial.slm
 ## check your jobs and outputs
 ls -lthr
