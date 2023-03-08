@@ -2,7 +2,7 @@
 
 #SBATCH -J gmx_mpi_8
 #SBATCH -e gmx_mpi_8.%j.err
-#SBATCH -o gmx_mpi_8.%j.log
+#SBATCH -o gmx_mpi_8.%j.out
 #SBATCH -N 2
 #SBATCH -n 4 
 #SBATCH -t 30
