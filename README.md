@@ -32,6 +32,7 @@ ssh $CSUC_USER@hpc.csuc.cat -p 2122
 git clone https://github.com/kErica/2023UB-formation.git
 
 scp -rp -P 2122 2023UB-formation $CSUC_USER@hpc.csuc.cat:/home/$CSUC_USER
+scp -rp -P 2122 2023UB-formation-master cursNUMBER@hpc.csuc.cat:/home/cursNUMBER
 
 ## or
 cd 2023UB-formation
