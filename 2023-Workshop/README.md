@@ -60,38 +60,102 @@ If implemented, the `interactive` command will also do the trick
 
 > **_NOTE:_**  You can open a second terminal and have a current view of your queue jobs. `watch squeue -u $USER`
 
-### Launch a serial job
+## Slurm scripts examples
+### Serial
 ```
-cd 2023UB-formation-master/01-Serial
-sbatch serial.slm
-## check your jobs and outputs
-ls -lthr
+#!/bin/bash
+#SBATCH -J SerialJob
+#SBATCH --time=01:00:00
+#SBATCH --mem-per-cpu=8G
+ml Application
+srun serial_binary
 ```
-
-### Launch an array of jobs
+### Shared memory (OpenMP)
 ```
-sbatch --array=0-9 serial-array.slm
+#!/bin/bash
+#SBATCH -J OpenMPJob
+#SBATCH --time=01:00:00
+#SBATCH --mem-per-cpu=8G
+#SBATCH --cpus-per-task=8
+ml Application
+srun openmp_binary
 ```
-
-### Launch an OpenMP job
+### Distributed memory (MPI)
 ```
-cd ../02-OpenMP
-ls
-sbatch openmp.slm
-cat hello.log
+#!/bin/bash
+#SBATCH -J MPIJob
+#SBATCH --time=01:00:00
+#SBATCH --ntasks=2
+#SBATCH --mem-per-cpu=8G
+ml Application
+srun mpi_binary
 ```
-
-### OpenMP, Hybrid and MPI jobs
+### Hybrid (MPI+OpenMP)
 ```
-cd ../03-gmx/
-
-## OpenMP job
-sbatch gmx_omp_8.slm
-
-## hybrid job
-sbatch gmx_hyb_8.slm
-
-## MPI job
-sbatch gmx_mpi_8.slm
+#!/bin/bash
+#SBATCH -J HybridJob
+#SBATCH --time=01:00:00
+#SBATCH --ntasks=4
+#SBATCH --mem-per-cpu=8G
+#SBATCH --cpus-per-task=8
+ml Application
+srun hybrid_binary
 ```
-
+### Job array
+```
+#!/bin/bash
+#SBATCH -J ArrayJob
+#SBATCH --time=01:00:00
+#SBATCH --mem-per-cpu=8G
+#SBATCH --array=1-1000
+ml Application
+srun array_binary "${SLURM_ARRAY_TASK_ID}"
+```
+### Serial GPU
+```
+#!/bin/bash
+#SBATCH -J GPUJob
+#SBATCH --time=01:00:00
+#SBATCH --ntasks=1
+#SBATCH --mem-per-cpu=8G
+#SBATCH --gres=gpu:1
+ml Application
+srun binary_cuda
+```
+### Hybrid (OpenMP + GPU)
+```
+#!/bin/bash
+#SBATCH -J GPUJob
+#SBATCH --time=01:00:00
+#SBATCH --ntasks=1
+#SBATCH --mem-per-cpu=8G
+#SBATCH --cpus-per-task=4
+#SBATCH --gres=gpu:2
+ml Application
+srun binary_cuda_openmp
+```
+### Hybrid (MPI + GPU)
+```
+#!/bin/bash
+#SBATCH -J GPUJob
+#SBATCH --time=01:00:00
+#SBATCH --ntasks=4
+#SBATCH --ntasks-per-node=2
+#SBATCH --mem-per-cpu=8G
+#SBATCH --gres=gpu:2
+ml Application
+srun binary_cuda_mpi
+```
+### Hybrid (OpenMP + MPI + GPU)
+```
+#!/bin/bash
+#SBATCH -J GPUJob
+#SBATCH --time=01:00:00
+#pSBATCH --ntasks=4
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=4
+#SBATCH --mem-per-cpu=8G
+#SBATCH --gres=gpu:1
+ml Application
+srun binary_cuda_mpi_openmp
+```
