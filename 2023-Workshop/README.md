@@ -41,7 +41,17 @@ ls -l /
 
 ## LMOD
 ### Modules based applications
-
+```
+ml
+ml av
+ml spider Python ## q to exit
+ml spider bwa
+ml spider gatk
+ml Python/3.9.6-GCCcore-11.2.0 ## always with the version
+which python
+python -V
+ml GATK/4.2.0.0-GCCcore-10.2.0-Java-11
+```
 
 ##SLURM
 ### SLURM basic commands
