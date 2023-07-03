@@ -33,10 +33,15 @@ mput -R *
 ```
 pwd
 df -h
+du -hs 
 ls
 ls -ld .
 ls -l /
 ```
+
+### Modules based applications
+
+
 
 #### SLURM basic commands
 ```
