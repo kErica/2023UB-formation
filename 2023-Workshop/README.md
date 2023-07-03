@@ -39,11 +39,12 @@ ls -ld .
 ls -l /
 ```
 
+## LMOD
 ### Modules based applications
 
 
-
-#### SLURM basic commands
+##SLURM
+### SLURM basic commands
 ```
 sacct	## Displays accounting data for all jobs.
 salloc	## Allocate resources for interactive use.
@@ -56,7 +57,7 @@ smap	## Graphically view information about SLURM jobs, partitions, and set confi
 squeue	## View information about jobs located in the SLURM scheduling queue.
 srun	## Run a parallel job
 ```
-## How to initiate an interactive session
+### How to initiate an interactive session
 > **_NOTE:_**  This will work only if the user can allocate resources.
 ```
 salloc --time 4:00:00 srun --pty bash
@@ -65,8 +66,8 @@ If implemented, the `interactive` command will also do the trick
 
 > **_NOTE:_**  You can open a second terminal and have a current view of your queue jobs. `watch squeue -u $USER`
 
-## Slurm scripts examples
-### Serial
+### Slurm scripts examples
+#### Serial
 ```
 #!/bin/bash
 #SBATCH -J SerialJob
@@ -75,7 +76,7 @@ If implemented, the `interactive` command will also do the trick
 ml Application
 srun serial_binary
 ```
-### Shared memory (OpenMP)
+#### Shared memory (OpenMP)
 ```
 #!/bin/bash
 #SBATCH -J OpenMPJob
@@ -85,7 +86,7 @@ srun serial_binary
 ml Application
 srun openmp_binary
 ```
-### Distributed memory (MPI)
+#### Distributed memory (MPI)
 ```
 #!/bin/bash
 #SBATCH -J MPIJob
@@ -95,7 +96,7 @@ srun openmp_binary
 ml Application
 srun mpi_binary
 ```
-### Hybrid (MPI+OpenMP)
+#### Hybrid (MPI+OpenMP)
 ```
 #!/bin/bash
 #SBATCH -J HybridJob
@@ -106,7 +107,7 @@ srun mpi_binary
 ml Application
 srun hybrid_binary
 ```
-### Job array
+#### Job array
 ```
 #!/bin/bash
 #SBATCH -J ArrayJob
@@ -116,7 +117,7 @@ srun hybrid_binary
 ml Application
 srun array_binary "${SLURM_ARRAY_TASK_ID}"
 ```
-### Serial GPU
+#### Serial GPU
 ```
 #!/bin/bash
 #SBATCH -J GPUJob
@@ -127,7 +128,7 @@ srun array_binary "${SLURM_ARRAY_TASK_ID}"
 ml Application
 srun binary_cuda
 ```
-### Hybrid (OpenMP + GPU)
+#### Hybrid (OpenMP + GPU)
 ```
 #!/bin/bash
 #SBATCH -J GPUJob
@@ -139,7 +140,7 @@ srun binary_cuda
 ml Application
 srun binary_cuda_openmp
 ```
-### Hybrid (MPI + GPU)
+#### Hybrid (MPI + GPU)
 ```
 #!/bin/bash
 #SBATCH -J GPUJob
@@ -151,7 +152,7 @@ srun binary_cuda_openmp
 ml Application
 srun binary_cuda_mpi
 ```
-### Hybrid (OpenMP + MPI + GPU)
+#### Hybrid (OpenMP + MPI + GPU)
 ```
 #!/bin/bash
 #SBATCH -J GPUJob
