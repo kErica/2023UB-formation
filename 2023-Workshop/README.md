@@ -168,7 +168,7 @@ srun binary_cuda_mpi
 #!/bin/bash
 #SBATCH -J GPUJob
 #SBATCH --time=01:00:00
-#pSBATCH --ntasks=4
+#SBATCH --ntasks=4
 #SBATCH --ntasks-per-node=2
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=8G
