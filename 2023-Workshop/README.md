@@ -6,7 +6,8 @@ The content of this folder was tested on June 2023 on the purpose to fulfill the
 WORKSHOP: Data science para biociencias (R, python, Bioinformática): 5 julio 2023 
 
 DISCLAIMER:
-The content was tested at CSUC cluster, some of the code may work elsewhere (mainly the slurm commands).
+The content was tested in a container, some of the code may *NOT* work elsewhere.
+Slurm code is generic, must be modified to be working. 
 
 ## Useful commands in HPC 
 
